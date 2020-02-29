@@ -1,2 +1,2 @@
 # TripleX
-A text based game about breaking code by calculating the common factors that produce a particular product and sum. 
+A simple text-based number puzzle game in which the player guesses which three numbers produce a certain and sum.  
