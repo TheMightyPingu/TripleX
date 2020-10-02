@@ -3,27 +3,19 @@
 
 // Import ctime Library That Helps Manipulate Time and Date Information
 #include <ctime>
-
-// Function To Print Game Introduction.
-void PrintIntroduction(int Difficulty)
-{
-    // Print Welcome Messages To The Terminal.
-    std::cout << "\n\nYou Are A Secret Agent Breaking Into A Level " << Difficulty; 
-    std::cout << " Secure Server Room...\n";
-    std::cout << "Enter The Correct Code To Continue...\n";
-}
-
+using namespace std; 
 
 // Function To Play Game
 bool PlayGame(int Difficulty) 
 {
     // Prints Game Introduction.
-    PrintIntroduction(Difficulty);
-
+    cout << "\n\nYou Are A Secret Agent Breaking Into A Level " << Difficulty; 
+    cout << " Secure Server Room...\n";
+    cout << "Enter The Correct Code To Continue...\n";
     // Store Code Numbers.
-    const int CodeA = rand() % Difficulty + (Difficulty * 5);
-    const int CodeB = rand() % Difficulty + (Difficulty * 5);
-    const int CodeC = rand() % Difficulty + (Difficulty * 5);
+    const int CodeA = rand() % Difficulty + Difficulty*2;
+    const int CodeB = rand() % Difficulty + Difficulty*2;
+    const int CodeC = rand() % Difficulty + Difficulty*2;
     
     // Compute Sum And Product Of Code Numbers.
     const int CodeSum = CodeA + CodeB + CodeC;
@@ -31,16 +23,16 @@ bool PlayGame(int Difficulty)
 
     // Print Sum And Product Of The Codes. 
     
-    std::cout << "\n+ There Are 3 Numbers In The Code";
-    std::cout << "\n+ The Numbers Add-Up To: " << CodeSum;
-    std::cout << "\n+ The Numbers Multiply To Give: " << CodeProduct << std::endl;
-    std::cout << std::endl;
+    cout << "\n+ There Are 3 Numbers In The Code";
+    cout << "\n+ The Numbers Add-Up To: " << CodeSum;
+    cout << "\n+ The Numbers Multiply To Give: " << CodeProduct << endl;
+    cout << endl;
 
     // Store And Input Guesses.
     int GuessA, GuessB, GuessC;
-    std::cout << "Enter The Code: ";
-    std::cin >> GuessA >> GuessB >> GuessC;
-    std::cout << "You Guessed: " << GuessA << ", " << GuessB << ", and " << GuessC << std::endl;
+    cout << "Enter The Code: ";
+    cin >> GuessA >> GuessB >> GuessC;
+    cout << "You Guessed: " << GuessA << ", " << GuessB << ", and " << GuessC << endl;
 
     // Store The Sum And Product Of The Guesses.
     const int GuessSum = GuessA + GuessB + GuessC;
@@ -49,14 +41,14 @@ bool PlayGame(int Difficulty)
     // Check Guesses and Grant Access If They Are Correct.
     if (GuessSum == CodeSum && GuessProduct == CodeProduct) 
     {
-        std::cout << "\n*** ACCESS GRANTED TO LEVEL " << Difficulty << " ***" << std::endl;
+        cout << "\n*** ACCESS GRANTED TO LEVEL " << Difficulty << " ***" << endl;
         return true;
     }
 
     // Deny Access If Guesses Are Wrong.
     else    
     {
-        std::cout << "\n*** ACCESS DENIED! CAREFUL AGENT! TRY AGAIN! ***\n";
+        cout << "\n*** ACCESS DENIED! CAREFUL AGENT! TRY AGAIN! ***\n";
         return false;
     }
 
@@ -74,8 +66,8 @@ int main()
     while (LevelDifficulty <= MaxDifficulty) 
     {
         bool bLevelComplete = PlayGame(LevelDifficulty);
-        std::cin.clear(); // Clears Any Errors
-        std::cin.ignore(); // Discards The Buffer
+        cin.clear(); // Clears Any Errors
+        cin.ignore(); // Discards The Buffer
 
         if (bLevelComplete) // Same As Saying bLevelComplete == true
         {   
@@ -84,7 +76,7 @@ int main()
         }
         
     }
-    std::cout << "\n*** GREAT WORK AGENT! NOW GET OUT OF HERE! ***\n ";
+    cout << "\n*** GREAT WORK AGENT! NOW GET OUT OF HERE! ***\n ";
     // Exit Program When Return Value Is 0. 
     return 0;
 
